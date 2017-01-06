@@ -48,7 +48,10 @@
         return -1;
       }
     });
-    console.log(sortByBirth);
+    console.table(sortByBirth);
+
+    const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    console.table(ordered);
 
     // Sort youngest to oldest
     const sortByBirthYoungFirst = inventors.sort(function(a, b) {
@@ -58,10 +61,21 @@
         return -1;
       }
     });
-    console.log(sortByBirthYoungFirst);
+
+    console.table(sortByBirthYoungFirst);
+
+    const sortByBirthYoungFirstCondensed = inventors.sort((a,b) => b.year > a.year ? 1 : -1);
+
+    console.table(sortByBirthYoungFirstCondensed);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+
+    const totalAge = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+
+    // 0 at end of call is the initialValue, accumulator function adds to that
 
     // 5. Sort the inventors by years lived
 
